@@ -1,15 +1,32 @@
-import { YStack, H2, Separator, Theme } from 'tamagui';
+import { YStack, H2, Button, Theme, Separator } from 'tamagui';
+import { Pressable, StyleSheet, Text } from 'react-native';
+import { Link } from 'expo-router';
 
-import EditScreenInfo from '../../components/edit-screen-info';
-
-export default function TabOneScreen() {
+export default function HomeScreen() {
   return (
     <Theme name="light">
       <YStack flex={1} alignItems="center" justifyContent="center">
-        <H2>Tab One</H2>
-        <Separator />
-        <EditScreenInfo path="app/(tabs)/index.tsx" />
+        <Text style={styles.text}>Comienza tu inventario tomado la foto de tus prendas favoritas</Text>
+        <Separator marginVertical={10} />
+        <Link push href={'/camera'} asChild >
+          <Button
+            alignSelf="center"
+            size="$4"
+            themeInverse={true}
+          >
+            Nueva fotos
+          </Button>
+        </Link>
+
+
       </YStack>
     </Theme>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    textAlign: 'center',
+    fontSize: 18
+  }
+})
